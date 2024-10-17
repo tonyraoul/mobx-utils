@@ -35,7 +35,7 @@ function createObservable(record) {
     )
 }
 
-test("basics", () => {
+test("basics", (done) => {
     let base = console.warn // eslint-disable-line no-console
     let warn = []
     console.warn = (msg) => warn.push(msg) // eslint-disable-line no-console

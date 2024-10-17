@@ -15,6 +15,7 @@
         "lib": [
             "dom",
             "es2015",
+            "ESNext",
             "scripthost",
             "es2015.promise",
             "es2015.generator",

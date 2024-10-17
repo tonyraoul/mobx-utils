@@ -56,7 +56,7 @@ interface GroupItemInfo {
  *     slicesByDay.get("we"))) // outputs 1, undefined
  * slices[0].day = "we" // outputs 0, [{ day: "we", hours: 12 }]
  */
-export class ObservableGroupMap<G, T> extends ObservableMap<G, IObservableArray<T>> {
+export class ObservableGroupMap<G, T> extends ObservableMap<G, IObservableArray<T & GroupItem>> {
     /**
      * Base observable array which is being sorted into groups.
      */
@@ -92,10 +92,10 @@ export class ObservableGroupMap<G, T> extends ObservableMap<G, IObservableArray<
         this._keyToName = keyToName
         this._groupBy = groupBy
         this._ogmInfoKey = Symbol("ogmInfo" + name) as any
-        this._base = base
+        this._base = base as IObservableArray<T & GroupItem>
 
-        for (let i = 0; i < base.length; i++) {
-            this._addItem(base[i])
+        for (let i = 0; i < this._base.length; i++) {
+            this._addItem(this._base[i])
         }
 
         this._disposeBaseObserver = observe(this._base, (change) => {

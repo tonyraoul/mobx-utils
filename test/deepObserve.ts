@@ -9,7 +9,7 @@ function cleanChange(change, includeObject = true) {
     })
 }
 
-function assertChanges<T>(x: T, fn: (x: T) => void) {
+function assertChanges<T extends object>(x: T, fn: (x: T) => void) {
     const target = observable(x)
     const events: any[] = []
 
